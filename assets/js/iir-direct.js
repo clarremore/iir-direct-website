@@ -520,6 +520,66 @@ window.addEventListener('scroll', updateActiveNav);
 window.addEventListener('load', updateActiveNav);
 
 /* =========================
+   CONTACT
+========================= */
+document.querySelectorAll('.contact-chip').forEach(chip => {
+  chip.addEventListener('click', () => chip.classList.toggle('active'));
+});
+
+document.getElementById('contact-form').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  const btn     = document.getElementById('contact-submit-btn');
+  const errorEl = document.getElementById('contact-form-error');
+  const formEl  = document.getElementById('contact-form');
+  const doneEl  = document.getElementById('contact-form-success');
+
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName  = document.getElementById('lastName').value.trim();
+  const email     = document.getElementById('email').value.trim();
+  const goals     = document.getElementById('campaignGoals').value.trim();
+  const interests = [...document.querySelectorAll('.contact-chip.active')]
+    .map(c => c.dataset.interest).join(', ');
+
+  // Validation
+  if (!firstName || !email) {
+    errorEl.textContent = 'Please fill in your first name and email.';
+    errorEl.hidden = false;
+    return;
+  }
+
+  // Loading state
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Sending…';
+  errorEl.hidden = true;
+
+  try {
+    const body = new FormData();
+    body.append('first_name', firstName);
+    body.append('last_name',  lastName);
+    body.append('email',      email);
+    body.append('interests',  interests || 'None selected');
+    body.append('goals',      goals     || 'Not provided');
+
+    const res  = await fetch('contact.php', { method: 'POST', body });
+    const data = await res.json();
+
+    if (!res.ok || data.error) throw new Error(data.error || 'Failed');
+
+    // Success
+    formEl.hidden = true;
+    doneEl.hidden = false;
+
+  } catch (err) {
+    console.error('Submit error:', err);
+    errorEl.textContent = 'Something went wrong — please try again or email us directly.';
+    errorEl.hidden = false;
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fa-solid fa-paper-plane me-2"></i>Submit request';
+  }
+});
+
+/* =========================
    DYNAMIC FOOTER YEAR
 ========================= */
 if (footerYear) {

@@ -709,100 +709,106 @@
             <!-- Contact -->
             <section id="contact" class="py-5 contact-hero-bg">
                 <div class="container contact-hero-layer mb-5 pb-5">
+
                     <div class="row justify-content-center text-center section-intro">
                         <div class="col-12 col-lg-8 section-heading">
                             <p class="section-eyebrow mb-3">Contact</p>
                             <h2 class="display-6 contact-campaign fw-bold mb-3">Start Your Next Campaign</h2>
-                            <p class="text-secondary mb-5 pb-5">
-                                Tell us what you want to promote and we’ll help connect your brand with the right industrial audience.
+                            <p class="contact-hero-sub mb-0">
+                                Tell us what you want to promote — we'll connect your brand with the right industrial audience.
                             </p>
                         </div>
                     </div>
 
-                    <div class="row g-5 align-items-stretch">
-                        <!-- Form -->
-                        <div class="col-12 col-lg-6">
-                            <div class="contact-card p-4 p-xl-5 h-100">
-                                <div class="contact-icon mb-4">
-                                    <i class="fa-solid fa-envelope"></i>
-                                </div>
+                    <div class="row justify-content-center mt-5">
+                        <div class="col-12 col-lg-9 col-xl-8">
+                            <div class="contact-combined-card">
 
-                                <h2 class="h3 fw-bold mb-3">Start a Campaign</h2>
-                                <p class="text-secondary mb-4">
-                                    Tell us what you're looking to promote and we’ll help position your brand in front of the right industrial audience.
-                                </p>
+                                <!-- Form body -->
+                                <div class="contact-combined-body p-4 p-xl-5">
+                                    <form id="contact-form" novalidate>
 
-                                <form>
-                                    <div class="row g-3">
-                                        <div class="col-12 col-md-6">
-                                            <label for="firstName" class="visually-hidden">First Name</label>
-                                            <input id="firstName" type="text" class="form-control" placeholder="First Name" />
+                                        <div class="row g-3">
+                                            <div class="col-12 col-md-6">
+                                                <label for="firstName" class="contact-field-label">First name</label>
+                                                <input id="firstName" type="text" class="form-control" placeholder="Jane" />
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <label for="lastName" class="contact-field-label">Last name</label>
+                                                <input id="lastName" type="text" class="form-control" placeholder="Smith" />
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="email" class="contact-field-label">Work email</label>
+                                                <input id="email" type="email" class="form-control" placeholder="jane@company.com" />
+                                            </div>
                                         </div>
 
-                                        <div class="col-12 col-md-6">
-                                            <label for="lastName" class="visually-hidden">Last Name</label>
-                                            <input id="lastName" type="text" class="form-control" placeholder="Last Name" />
+                                        <hr class="contact-divider my-4" />
+
+                                        <div class="mb-3">
+                                            <p class="contact-field-label mb-2">I'm interested in</p>
+                                            <div class="contact-chip-grid">
+                                                <button type="button" class="contact-chip active" data-interest="email">
+                                                    <i class="fa-solid fa-envelope"></i>
+                                                    Email campaigns
+                                                </button>
+                                                <button type="button" class="contact-chip" data-interest="webinar">
+                                                    <i class="fa-solid fa-video"></i>
+                                                    Webinars
+                                                </button>
+                                                <button type="button" class="contact-chip" data-interest="banner">
+                                                    <i class="fa-solid fa-rectangle-ad"></i>
+                                                    Banner ads
+                                                </button>
+                                            </div>
                                         </div>
 
-                                        <div class="col-12">
-                                            <label for="email" class="visually-hidden">Email Address</label>
-                                            <input id="email" type="email" class="form-control" placeholder="Email Address" />
+                                        <div class="mb-4">
+                                            <label for="campaignGoals" class="contact-field-label">Campaign goals</label>
+                                            <textarea id="campaignGoals" class="form-control" rows="4"
+                                            placeholder="Tell us about your target audience, objectives, and timeline…"></textarea>
                                         </div>
 
-                                        <div class="col-12">
-                                            <label for="interest" class="visually-hidden">What are you interested in?</label>
-                                            <select id="interest" class="form-select">
-                                                <option selected disabled>What are you interested in?</option>
-                                                <option>Email Campaigns</option>
-                                                <option>Webinars</option>
-                                                <option>Banner Advertising</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="col-12">
-                                            <label for="campaignGoals" class="visually-hidden">Tell us about your campaign goals</label>
-                                            <textarea id="campaignGoals" class="form-control" rows="4" placeholder="Tell us about your campaign goals"></textarea>
-                                        </div>
-
-                                        <div class="text-center pt-2 mt-2">
-                                            <button type="submit" class="btn btn-primary-form px-5">
-                                                Submit Request
+                                        <div class="text-center">
+                                            <button id="contact-submit-btn" type="submit" class="btn btn-primary-form px-5">
+                                                <i class="fa-solid fa-paper-plane me-2"></i>Submit request
                                             </button>
+                                            <p id="contact-form-error" class="text-danger mt-2 mb-0" hidden></p>
                                         </div>
+
+                                    </form>
+
+                                    <!-- Success state — hidden until submission succeeds -->
+                                    <div id="contact-form-success" hidden class="text-center py-4">
+                                        <div class="contact-icon mb-3 mx-auto" style="background:rgba(25,135,84,.12); color:#198754;">
+                                            <i class="fa-solid fa-circle-check fa-lg"></i>
+                                        </div>
+                                        <h3 class="h5 fw-bold mb-2">Request received!</h3>
+                                        <p class="text-secondary mb-0">We'll be in touch shortly to discuss your campaign.</p>
                                     </div>
-                                </form>
-                            </div>
-                        </div>
 
-                        <!-- Trust / CTA -->
-                        <div class="col-12 col-lg-6">
-                            <div class="contact-card p-4 p-xl-5 h-100 d-flex flex-column justify-content-between">
-                                <div>
-                                    <div class="contact-icon mb-4">
-                                        <i class="fa-solid fa-handshake"></i>
-                                    </div>
-
-                                    <h2 class="h3 fw-bold mb-3">Let’s position your brand where it matters</h2>
-
-                                    <p class="text-secondary mb-4">
-                                        IIR Direct connects your company with a highly targeted industrial audience already engaged in daily industry content.
-                                    </p>
-
-                                    <ul class="service-list list-unstyled mb-4">
-                                        <li>70,000+ daily email reach</li>
-                                        <li>120,000+ monthly homepage traffic</li>
-                                        <li>Direct access to decision-makers</li>
-                                    </ul>
                                 </div>
 
-                                <div class="text-center">
-                                    <a href="mailto:ncole@iirdirect.com" class="btn btn-outline-primary px-4">
-                                        Or Email Us Directly
-                                    </a>
+                                <!-- Trust bar -->
+                                <div class="contact-trust-bar">
+                                    <div class="contact-trust-item">
+                                        <i class="fa-solid fa-users"></i>
+                                        70,000+ daily email reach
+                                    </div>
+                                    <div class="contact-trust-item">
+                                        <i class="fa-solid fa-chart-line"></i>
+                                        120,000+ monthly visitors
+                                    </div>
+                                    <div class="contact-trust-item">
+                                        <i class="fa-solid fa-bullseye"></i>
+                                        Direct to decision-makers
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
+
                 </div>
             </section>
         </main>
