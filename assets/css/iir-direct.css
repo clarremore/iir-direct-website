@@ -351,6 +351,51 @@ body {
   }
 }
 
+.hero .hero-row {
+    display: flex;
+}
+
+.hero .hero-col {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+}
+
+@media (min-width: 1600px) {
+    .hero .hero-col {
+        width: 33.333333% !important;
+        flex: 0 0 33.333333% !important;
+        max-width: 33.333333% !important;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1599.98px) {
+    .hero .hero-copy {
+        max-width: 760px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .hero .hero-copy .d-flex {
+        justify-content: center !important;
+    }
+
+    .hero .hero-carousel-wrap {
+        max-width: 760px;
+        margin: 0 auto;
+    }
+
+    .hero .hero-stats-wrap {
+        max-width: 620px;
+        margin: 0 auto;
+    }
+
+    .hero .hero-image-card {
+        flex: 0 0 360px;
+        height: 320px;
+    }
+}
+
 /* =========================
    HERO RIGHT PANEL
 ========================= */

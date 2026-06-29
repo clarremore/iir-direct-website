@@ -354,6 +354,18 @@ function openPanel(panelName) {
   if (config.panel) config.panel.classList.add('show');
 
   applyShiftCards(panelName);
+
+  setTimeout(() => {
+    const solutionsSection = document.getElementById('services');
+    if (!solutionsSection) return;
+
+    const offset = getHeaderOffset() + -550;
+
+    window.scrollTo({
+      top: solutionsSection.getBoundingClientRect().top + window.pageYOffset - offset,
+      behavior: 'smooth'
+    });
+  }, 100);
 }
 
 function togglePanel(panelName) {
